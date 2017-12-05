@@ -1,0 +1,30 @@
+\documentclass[document.tex]{subfiles}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+
+\begin{document}
+
+\chapter{ Conclusion}
+\hrule
+\newpage
+%********************************
+% introduction
+%*******************
+\section{Conclusion}
+In this paper, we present a method to the new user cold start problem for RSs applying Collaborative Filtering (CF). The  proposed system adopts a three-phase approach in order to provide predictions for new user. We followed a mechanism that takes into consideration their demographic data and based on similarity techniques finds the user’s ‘neighbors’. We defined as the ‘neighbors’ are which have the similar characteristics with new user. The idea is that people with similar background and characteristics having more possibilities to have similar preferences. Therefore each new user is classified into a group according a rating prediction mechanism is responsible to result ratings for them. The final prediction of rating calculated by taking average rating for a particular movie within the group in which a few of current user are rated that movie. Our experimental shows the performance of proposed DT and KNN technique. We choose the dataset provided by Grouplens research team. The proposed DT performs better than KNN. When a large amount of current user present in a system the RMSE value is lower than the KNN comparatively. 
+%********************************
+% Feature Level Fusion Technique
+%*******************
+
+\section{Limitations of proposed methodology}
+\begin{itemize}
+	\item Though there were more than four elbow curve we have tested only for four.
+	\item Comparatively DT is faster than K-NN.
+	\item We predict movie rating with accounting number of user who rated that movie are 5.
+\end{itemize}
+
+\section{Future Works}
+In future, we will look forward to solve cold-start recommendation system for large scaled dataset using same methodologies and using different approaches then compare them to find an optimal approach in cold-start recommendation system. 
+
+\end{document}

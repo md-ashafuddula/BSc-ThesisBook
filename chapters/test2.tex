@@ -1,0 +1,26 @@
+\documentclass{report}
+\usepackage{titlesec}
+
+\newcommand{\chapfnt}{\fontsize{16}{19}}
+\newcommand{\secfnt}{\fontsize{14}{17}}
+\newcommand{\ssecfnt}{\fontsize{12}{14}}
+
+\titleformat{\chapter}[display]
+{\normalfont\chapfnt\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\chapfnt}
+
+\titleformat{\section}
+{\normalfont\secfnt\bfseries}{\thesection}{1em}{}
+
+\titleformat{\subsection}
+{\normalfont\ssecfnt\bfseries}{\thesubsection}{1em}{}
+
+\titlespacing*{\chapter} {0pt}{50pt}{40pt}
+\titlespacing*{\section} {0pt}{3.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+\titlespacing*{\subsection} {0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+\begin{document}
+\chapter{Introduction}
+\section{Test}
+\subsection{More}
+
+\end{document}

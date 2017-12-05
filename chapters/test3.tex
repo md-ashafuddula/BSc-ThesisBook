@@ -1,0 +1,20 @@
+\documentclass[oneside]{memoir}
+\usepackage{titletoc}
+\usepackage{lipsum}
+\begin{document}
+	\tableofcontents
+	\chapter{A chapter}
+	\startcontents[chapters]
+	\printcontents[chapters]{}{1}{}
+	\section{Section}
+	\lipsum[1]
+	\section{Section 2}
+	\lipsum
+	\chapter{Second chapter}
+	\startcontents[chapters]
+	\printcontents[chapters]{}{1}{}
+	\section{Section}
+	\lipsum[2]
+	\section{Another section}
+	\lipsum
+\end{document}

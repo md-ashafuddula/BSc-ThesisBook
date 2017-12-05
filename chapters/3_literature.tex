@@ -1,0 +1,98 @@
+\documentclass[document.tex]{subfiles}
+\begin{document}
+
+\chapter{Literature Study}
+\hrule
+\newpage
+\section{Introduction}
+Before starting our proposed method in this chapter we discussed about basic algorithms that we used in our proposed method such as clustering, classification the goal of clustering and classification, K-means algorithm, K-Nearest Neighbor (K-NN) algorithm \& Decision Tree (DT) algorithm. 
+
+\section{Clustering}
+Clustering is the assignment of objects into subsets (called clusters) so that object in the same cluster are similar and dissimilar to objects of other groups. Clustering is a method of unsupervised learning, and a common technique for statistical data analysis used in many field. The goal of good document clustering schemes is to minimize intra-cluster distance distances between documents, while maximizing intra-cluster distances. Distance measurement is the heart of the document clustering. 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=5in]{imgs/clusterex.jpg}
+	\caption[Example of clustering\cite{a35}]
+	{Example of clustering\cite{a35}}
+\end{figure}
+
+\section{The goal of the clustering}
+The goal of clustering is to identify distinct groups in a dataset. The basic idea of model-based clustering is to approximate the data density by a mixture model, typically a mixture of Gaussians, and to estimate the parameters of the component densities, the mixing fractions, and the number of components from the data. The number of distinct groups in the data is then taken to be the number of mixture components, and the observations are partitioned into clusters (estimates of the groups) using Bayes' rule. If the groups are well separated and look Gaussian, then the resulting clusters will indeed tend to be ``distinct'' in the most common sense of the word - contiguous, densely populated areas of feature space, separated by contiguous, relatively empty regions. If the groups are not Gaussian, however, this correspondence may break down; an isolated group with a non-elliptical distribution.
+
+\section{Classification}
+Classification is a technique to classify input data and label them from discrete set of possible values.
+\section{The goal of the classification}
+The goal of the classification is to take input data from dataset and predict category for those data from a discrete set of possible values.
+Example, Classifying emails as spam or not, giving a diagnosis for patient, given a set of symptoms, deciding if a user watching romance movie only or action movie or what type of category he falls. 
+
+\section{Clustering vs. Classification}
+Classification can be defined as the task of assigning instances to pre-defined classes. As an example we can decide whether a particular patient record can be associated with a specific disease. On the other hand cluster is the task of grouping related data points together without labeling them. Example, grouping similar symptoms without knowing the symptoms indicate.
+\section{K-Means Clustering}
+The k-means clustering algorithm is known to be efficient in clustering large data sets. This clustering algorithm was developed by MacQueen, and is one of the simplest and the best known unsupervised learning algorithms that solve the well-known clustering problem. The K-Means algorithm aims to partition a set of objects, based on their attributes/features, into k clusters, where k is a predefined or user-defined constant. The main idea is to define k centroids, one for each cluster. The centroid of a cluster is formed in such a way that it is closely related (in terms of similarity function; similarity can be measured by using different methods such as cosine similarity, Euclidean distance, Extended Jaccard) to all objects in that cluster.
+\section{K-Means Clustering Algorithm}
+
+\begin{algorithm}[H]
+	\textbf{Algorithm 1: }
+	The k-means clustering algorithm\cite{a35}	\\
+	Step 1: Choose k number of clusters to be determined\\
+	Step 2: Choose k objects randomly as the initial cluster center\\
+	Step 3: Repeat  \\
+	Step 4: Assign each object to their closest cluster\\
+	Step 5: Compute new clusters, i.e. Calculate mean points. \\
+	Step 6: Until \\
+	Step 7: No changes on cluster centers (i.e. Centroids do not change location any more) OR\\
+	Step 8: No object changes its cluster (We may define stopping criteria as well) 
+	\label{kmeans}
+\end{algorithm}
+\section{K-Nearest Neighbor (KNN) Classification}
+In pattern recognition, the k-nearest neighbor algorithm (K-NN) is a non-parametric method used for classification and regression. In both cases, the input consists of the k closest training examples in the feature space.  In K-NN classification, the output is a class membership. The simple version of the K-nearest neighbor classifier algorithms is to predict the target label by finding the nearest neighbor class. The closest class will be identified using the distance measures like Euclidean distance.
+\section{K-Nearest Neighbor (KNN) Classification Algorithm}
+\begin{algorithm}[H]
+	\textbf{Algorithm 2: }
+	The K-NN Algorithm\cite{a36}	\\
+	Step 1: Calculate "d(x, xi)", i =1, 2, ….., n; where d denotes the Euclidean distance between the points.\\
+	Step 2: Arrange the calculated n Euclidean distances in non-decreasing order\\
+	Step 3: Let k be a +ve integer, take the first k distances from this sorted list.\\
+	Step 4: Find those k-points corresponding to these k-distances.\\
+	Step 5: Let $k_i$ denotes the number of points belonging to the $i^{th}$ class among k points i.e. k $\geq$ 0\\
+	Step 6: If $k_i > k_j$  $\forall$  $i \neq$ j then put x in class i.\\ 
+	
+\end{algorithm}
+
+\section{Decision Tree (DT) Classification}
+Decision Tree algorithm belongs to the family of supervised learning algorithms. Unlike other supervised learning algorithms, decision tree algorithm can be used for solving regression and classification problems too.\\
+The general motive of using Decision Tree is to create a training model which can use to predict class or value of target variables by learning decision rules inferred from prior data (training data).\\
+The understanding level of Decision Trees algorithm is so easy compared with other classification algorithms. The decision tree algorithm tries to solve the problem, by using tree representation. Each internal node of the tree corresponds to an attribute, and each leaf node corresponds to a class label.\\
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=4.5in,height=2in]{imgs/dt.jpg}
+	\caption[Decision Tree classifier\cite{a37}]
+	{Decision Tree classifier\cite{a37}}
+\end{figure}
+\section{Decision Tree (DT) Algorithm}
+\begin{algorithm}[H]
+	\textbf{Algorithm 3: }
+	The Decision Tree algorithm\cite{a38}	\\
+	Step 1: Create a node N.\\
+	Step 2: If tuples in D are all of the same class, C then \\
+	Step 3: return N as a leaf node labeled with class C.\\
+	Step 4: If attribute\_list is empty then \\
+	Step 5: return N as a leaf node labeled with the majority class in D.\\
+	Step 6: Apply Attribute\_selection\_method(D,attribute\_list) to find "best splitting\_criterion".\\
+	Step 7: Label node N with splitting\_criterion.\\
+	Step 8: If splitting\_attribute is discrete-valued and \\
+	Step 9: multiway splits allowed then\\
+	Step 10: attribute\_list $\leftarrow$ attribute\_list – splitting\_attribute.\\
+	Step 11: For each outcome j of splitting\_criterion\\
+	Step 12: Let $D_j$ be the set of data tuples in D satisfying the outcome j.\\
+	Step 13: If $D_j$ is empty then\\
+	Step 14: attach a leaf labeled with the majority class in D to node N.\\
+	Step 15: else attach the node returned by generate\_decision\_tree ($D_j$, attribute\_list) to \\
+	Step 16: node N.\\
+	Step 17: endfor\\
+	Step 18: return N.\\ 
+
+\end{algorithm}
+\section{Conclusion}
+In this chapter, we discussed about the basic knowledge about clustering, classification, K-NN \& DT classifier. This chapter contains basic knowledge before starting our proposed approach.
+\end{document}

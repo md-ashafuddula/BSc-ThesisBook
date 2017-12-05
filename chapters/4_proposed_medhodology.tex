@@ -1,0 +1,141 @@
+\documentclass[document.tex]{subfiles}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+
+\begin{document}
+	
+	%\part{First Part of this document}
+	
+	\chapter{Proposed Methodology}
+	\hrule
+	\newpage
+	%********************************
+	% introduction
+	%*******************
+	\section{Introduction}
+	This chapter briefly discussed about our proposed methodology using previously gathered knowledge such as Elbow method, K-means clustering, K-NN and DT classification.
+	%********************************
+	% Iris Recognition System
+	%*******************
+	\section{Proposed Methodology}
+	In this section we propose an approach based on K-Nearest Neighbor (KNN) and Decision Tree (DT) classification. Our key idea is to build a predictive model for user/item pairs by leveraging all available information of users and items, which is particularly useful for cold-start recommendation including new user recommendation. The proposed model alleviates the user cold start problem of CF. The main operational aspect are depicted in Fig: ~\ref{proposal}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=5in]{imgs/proposed3.jpg}
+		\caption[The architecture of proposed system]
+		{The architecture of proposed system}
+		\label{proposal}
+	\end{figure}
+	%********************************
+	% Steps of Iris Recognition System
+	%*******************
+	As an example, we can assume a system, where a group of users and items are exists. Suppose, after some times, a group of new registered users are identified \& system has to perform item recommendation for these new users. Where the system has only their demographic data such as age, gender, country, etc.\\
+	In our proposed method, system first reduces the dimension of existing users using SVD. Then using their demographic data apply elbow method to find number of possible cluster or group. After identifying number of cluster apply K-Means cluster on existing users data. Now system classifies the existing users using DT or KNN approach.\\
+	For new users system perform DT or KNN classification and classify them to Estimate their corresponding category. After finding their category, from the category the group of neighbors likely items are collected. Using those likely items whose ratings are 3 or above 3 (rating in scale of 0 to 5) will be recommended to the new users.\\
+	The process of predicting item rating for a new user involves three phases. Let the set of current users in the system be,	$U = \{ u_1,u_2,……,u_m \}$ 
+	and $N = \{ n_1,n_2,……., n_n \}$                        	               
+	be the set of the new users. Moreover, a set,
+	$I = \{ i_1,i_2,…..,i_k \}  $                                                   
+	of items is available.
+	At first, we build a model based on demographic data,
+	$D = \{ d_1,d_2,…..,d_i \}$ (D is defined by developers) and users preferences. We name this step ‘Classification’. People with a common background are much likely to have similar preferences. The classification component implements a model on the basis of a training set which is the reduction of current users feature and contains instances of the whole data store. Instances include variables related to D. Then, we use the generated model to map a new observation in the appropriate category C. C belongs in the set of categories,
+	$C = \{ c_1,c_2,….., c_b \} $ 
+	In the Fig: ~\ref{proposal}, we show two key factors: (a) the prediction variable V, and (b) the estimated category C. For each new observation,
+	$O_j, j = \{1,2,…...n \}$
+	We set a class attribute that represents V. Value of this class are possible categories U, $c_j \subseteq C$ 
+	for each new $O_j$ . One of these categories $c_j$ is the output of the output of the model and the corresponding category C for every
+	 $n\in N$ . The neighbors in NG are users that belong to the same category as the model predicts.\\	
+	Second, after the selection of NG, we calculate the similarity between $n \in N$ and each of the neighbours $u_j \in NG$, j = 1,2,…. $|NG|$ through demographic data. We name this as step ‘Similarity Estimation’. In this phase we incorporate a similarity function that combine similarity from $d_j \in D$, j = 1,2,3,…. $|D|$. \\
+	Finally, we make predictions combining the similarity measure and neighbors ratings. We name this step as ‘Collaborative Prediction’. This component implements a function that makes a prediction for an item $i \in I$. the prediction is derived by a weighted average of each $u_j$ ratings. More specially, we combine the similarity weights calculated in the previous phase with the ratings of neighbors for the possible recommended item.
+	
+	\section{Dataset}
+	In this work we used Movielens ml-100k dataset\cite{a39}. Which is stable benchmark dataset with 100,000 ratings (1-5) from 943 users on 1682 movies and released in 4/1998.
+	\begin{itemize}
+		\item Training set with 3/4 users data
+		\item Test set with 1/4 users data
+		\item 5 User’s Attributes
+	\end{itemize}
+\begin{table}[htb]
+	\centering
+	\begin{tabular}{ |c|c|c| } 
+		\hline 
+		User Attributes & Movie Features \\
+		\hline
+		\multirow{7}{15em}[1ex] {Gender \\  Age\\  Occupation \\ Constant Feature \\ Location\\} & 2 \\ 
+		& 7  \\ 
+		& 21  \\ 
+		& 1 \\
+		& 0 \\
+		[1ex] 
+		\hline
+	\end{tabular}
+	\caption{Users attribute in dataset}
+	\label{table1}
+	
+\end{table}
+
+\begin{table}[htb]
+	\begin{center}
+		\begin{tabular}{ |c|c|c|c| } 
+			\hline 
+			User Id & Movie Id & Rating \\
+			\hline
+			1 &	201 & 4\\
+			3 &	111	& 3.5\\
+			91 & 102 & 5\\
+			20 & 210 & 3\\
+			23 & 91 & 4\\
+			
+			\hline
+		\end{tabular}
+		\caption{Relationship of user id, movie id with ratings in dataset}
+		\label{table2}
+	\end{center}
+	
+\end{table}
+
+\section{User classification and Neighbor finding}
+Through the classification algorithms, we are able to produce category C, based on the data related to the set U. In order to have the final C, we applied multi-class classifiers which gives us opportunity to have multiple class in the results. To do this, at first we reduced the current  existing users ( demography ) features using Singular Value Decomposition ( SVD ) in economy size Equation ~\ref{svd}. 
+Then using the reduced feature we have trained the classification algorithms. We use here in K Nearest Neighbor (KNN) Fig: ~\ref{knn}, 
+and Decision Tree ( DT ) Fig: ~\ref{dtt}. 
+To achieve the number of class for a specific group we use clustering algorithm then applied classification algorithm. Here we use Algorithm: ~\ref{kmeans},  K-Means clustering. \\
+For predicting new Category $C_j$ of a new user, we used this trained classification algorithm KNN and DT which gives us related classification or users category, In the KNN algorithm we use Euclidean distance.
+
+In general, the distance between points x and y in a Euclidean space \textit{$R^n$} is given by Equation Eq. ~\ref{euclead}
+\begin{equation}
+d =\sqrt{\sum_{i=1}^n |X-Y|^2}
+\label{euclead}
+\end{equation}
+Depending on value of matrix $\Sigma_{[r \times r]}$ (strength / diagonal matrix) choose 2 features from current users features.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=4in,height=2.8in]{imgs/knn.jpg}
+	\caption[KNN Neighbor finding]
+	{KNN Neighbor finding}
+	\label{knn}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=4in,height=2.8in]{imgs/dtt.jpg}
+	\caption[Decision Tree (DT)]
+	{Decision Tree (DT)}
+	\label{dtt}
+\end{figure}
+
+\section{Rating prediction}
+The final phase is to produce rating predictions for new users. For each user $n_j \in N$, the model should provide predicted ratings for every new user. That the items seen by the same category by each current user which has highest average rating and rating should be done by at least 5 user in the category.\\
+Therefore the following equation for rating prediction.
+\begin{equation}
+r_{n_j,i_b} = \sum_{i=1}^K R_c / \sum_{i=1}^K N
+\label{ratingPrediction}
+\end{equation}
+
+For $n_j \in C$ , where K = number of user in a class who are rated item $i_b$ and $R_c$ is the rating of item $i_b$.
+$r_u,i_b$ is the rating of the user u for item $i_b$. Based on the above approach, we aim to enhance rating that are made by users having large similarity degree with every new user. This is as expected as users having in common a lot of characteristics probably they will have similar item preferences.
+
+
+\section{Conclusion}
+	In this chapter, we briefly discussed about our proposed two methodologies, dataset and finally rating prediction for new user in the system. The main challenge in K-NN was to decide the value of K and it was slower than DT approach. In the K-NN approach we consider K = 5.
+		
+\end{document}

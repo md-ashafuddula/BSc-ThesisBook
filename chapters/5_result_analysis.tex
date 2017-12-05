@@ -1,0 +1,257 @@
+\documentclass[document.tex]{subfiles}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+
+\begin{document}
+	\chapter{Result Analysis}
+	\hrule
+
+	\newpage
+	%********************************
+	% introduction
+	%*******************
+	\section{Introduction}
+	This chapter contains the performance report of our proposed model. We define certain performance metrics and then present our results. Our aim is to quantify the performance of the proposed model concerning the prediction accuracy and compare the MAE \& RMSE results obtained by using different classification algorithms (K-NN \& DT).
+	\section{Metrics Evaluation}
+	Widely used metrics for prediction accuracy. The first metrics is the Means Absolute Error (MAE). MAE is defined in Eq. ~\ref{mae}. In this equation, $p_u,i$ defines the prediction for user u and for item I while $r_u,i$ symbolizes the actual rating. Finally K is the symbolize number of items under evaluation.
+	\begin{equation}
+	MAE =1/k \sum_{u,i} |p_u,i - r_u,i|
+	\label{mae}	
+	\end{equation}  
+	Another important metric is the Root Mean Square Error (RMSE) defined as Eq. ~\ref{rmse}
+	\begin{equation}
+	RMSE =\sqrt{1/k \sum_{u,i} (p_u,i - r_u,i)^2}
+	\label{rmse}
+	\end{equation}  
+	Both metrics are widely used in evaluating recommender systems with respect to prediction accuracy. 
+	\section{Result Evolution}
+	We run a number of experiments for a specific dataset. The dataset is retrieved by the grouplens research team\cite{a39}. Grouplens provides the Movielens dataset containing 1000000 ratings for 1682 movies by 943 users. From the set of users we choose a number of user who are registered consider as current / existing users others are considered as new users in the system. Through this approach, we try to find out how the system behaves for different numbers of registered users.
+	\subsection{RMSE of rating prediction obtained by KNN and DT algorithm}
+	From Elbow method we choose cluster 13,19,23,71. Though curve shows better elbow at 14 we choose lower number 13 as cluster number fig ~\ref{fig:cla}. And for fig ~\ref{fig:clb}, we try to choose k for which system gives us better performance so though 65 and 67 shows better elbow we used 71. Thus we can compare the results behavior of MAE \& RMSE for lower number of cluster \& with higher number of cluster. 
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}[b]{0.49\textwidth}
+			\includegraphics[width=\textwidth]{imgs/cl1.jpg}
+			\caption{for k (5 - 30) }
+			\label{fig:cla}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.49\textwidth}
+			\includegraphics[width=\textwidth]{imgs/cl2.jpg}
+			\caption{for k (50 - 80)}
+			\label{fig:clb}
+		\end{subfigure}
+		\caption{Identification number of cluster from Elbow curve }\label{fig:clusterChoose}
+	\end{figure}
+For different cluster number we predict rating and measure MAE, maximum MAE, RMSE \& maximum RMSE then plot them, thus we know the system performance for K-NN \& DT approaches.
+	
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}[b]{0.49\textwidth}
+			\includegraphics[width=\textwidth]{imgs/akn13.png}
+			\caption{Users (KNN approach)}
+			\label{figkn13}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.49\textwidth}
+			\includegraphics[width=\textwidth]{imgs/adt13.png}
+			\caption{Users (DT approach)}
+			\label{figdt13}
+		\end{subfigure}
+		\caption{MAE Result scenario,  Error vs Users for 13 category}\label{fig13}
+	\end{figure}
+	
+	
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}[b]{0.49\textwidth}
+			\includegraphics[width=\textwidth]{imgs/akn19.png}
+			\caption{Users (KNN approach)}
+			\label{figkn19}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.49\textwidth}
+			\includegraphics[width=\textwidth]{imgs/adt19.png}
+			\caption{Users (DT approach)}
+			\label{figdt19}
+		\end{subfigure}
+		\caption{MAE Result scenario,  Error vs Users for 19 category}\label{fig19}
+	\end{figure}
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}[b]{0.49\textwidth}
+		\includegraphics[width=\textwidth]{imgs/akn23.png}
+		\caption{Users (KNN approach)}
+		\label{figkn23}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.49\textwidth}
+		\includegraphics[width=\textwidth]{imgs/adt23.png}
+		\caption{Users (DT approach)}
+		\label{figdt23}
+	\end{subfigure}
+	\caption{MAE Result scenario,  Error vs Users for 23 category}\label{fig23}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}[b]{0.49\textwidth}
+		\includegraphics[width=\textwidth]{imgs/akn71.png}
+		\caption{Users (KNN approach)}
+		\label{figkn71}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.49\textwidth}
+		\includegraphics[width=\textwidth]{imgs/adt71.png}
+		\caption{Users (DT approach)}
+		\label{figdt71}
+	\end{subfigure}
+	\caption{MAE Result scenario,  Error vs Users for 71 category}\label{fig71}
+\end{figure}
+
+Ratings are between 1 (minimum value) and 5 (maximum value). All ratings are integer values. For each user, we have taken the identification number and her demographic data $D = \{d1, d2, d3, d4, d5\} = \{age, occupation, gender, constant feature, country\}$ as primarily no other data from new users are available in the system.
+
+\section{Comparison between K-NN and DT approach}
+We conclude comparison between K-NN and DT approaches mainly depending on average of MAE in K-NN and DT approaches and also calculate RMSE.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=3.5in]{imgs/Acomp13.png}
+	\caption[MAE Comparison between DT and KNN for category 13]
+	{MAE Comparison between DT and KNN for category 13}
+	\label{comp13}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=3.5in]{imgs/Acomp19.png}
+	\caption[MAE Comparison between DT and KNN for category 19]
+	{MAE Comparison between DT and KNN for category 19}
+	\label{comp19}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=3.5in]{imgs/Acomp23.png}
+	\caption[MAE Comparison between DT and KNN for category 23]
+	{MAE Comparison between DT and KNN for category 23}
+	\label{comp23}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=3.5in]{imgs/Acomp71.png}
+	\caption[MAE Comparison between DT and KNN for category 71]
+	{MAE Comparison between DT and KNN for category 71}
+	\label{comp71}
+\end{figure}
+
+Comparing KNN and DT for different category from the bar graph we can see that for 19 cluster both shows better MAE. The final comparison between these two approaches for MAE \& RMSE are shown in fig: ~\ref{MaefinalComp} \& fig: ~\ref{RmsefinalComp} respectively.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=4.5in]{imgs/MAEcomp.png}
+	\caption[Final MAE comparison between KNN and DT]
+	{Final MAE comparison between KNN and DT}
+	\label{RmsefinalComp}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=4.5in]{imgs/RMSEcomp.png}
+	\caption[Final MAE comparison between KNN and DT]
+	{MAE Final MAE comparison between KNN and DT}
+	\label{MaefinalComp}
+\end{figure}
+\section{Result tables}
+We followed the following result scenario. In which in the result graph KNN and DT for different category we compare the two technique with 4 validation user data. 
+$|u| = users$, and the corresponding average MAE \& RMSE value. The MAE \& RMSE value scaled between 0 to 5 and we showed that in the above graph which defines the max MAE \& RMSE value. We calculate MAE from following Eq. ~\ref{mae} and then calculate RMSE from following Eq. ~\ref{rmse2}. 
+\begin{equation}
+RMSE =\sqrt{1/n \sum_{i=1}^n (y_i - Y_i)^2}
+\label{rmse2}
+\end{equation}  
+$where, y_i = predicted rating, Y_i = actual rating and n = number of user.$
+\\After the result scenario we conclude the comparative result between KNN and DT for different user’s category level. Then we finally reached in the final comparison between DT and KNN. After that we calculate standard deviation for different number of user’s to see how spread the data around the mean, where RMSE is used to measure distance between prediction and actual rating for items. We calculate standard deviation using Eq. ~\ref{stdDev}.
+\begin{equation}
+\sigma =\sqrt{1/n \sum_{i=1}^n (a_i - A_i)^2}
+\label{stdDev}
+\end{equation} 
+where, $a_i$ = average RMSE for a category, $Ai$ = RMSE for a category for a number of user and n = number of user.
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular}{ |c|c|c|c|c| } 
+			\hline 
+			Category No. & Average MAE DT & Max MAE DT & Standard Deviation DT \\
+			\hline
+			13  & 0.66	& 3.36	& $\pm0.03$\\
+			19	& 0.58	& 3.13	& $\pm0.04$\\
+			23	& 0.68	& 2.76	& $\pm0.04$\\
+			71	& 0.90	& 2.92	& $\pm0.02$\\
+			
+			\hline
+		\end{tabular}
+		\caption{MAE Result table for DT}
+		\label{MaetableResdt}
+	\end{center}
+	
+\end{table}
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular}{ |c|c|c|c|c| } 
+			\hline 
+			Category No. & Average MAE KNN & Max MAE KNN & Standard Deviation KNN \\
+			\hline
+			13	& 0.69	& 3.36	& $\pm0.03$\\
+			19	& 0.64	& 3.17	& $\pm0.04$\\
+			23	& 0.75	& 2.79	& $\pm0.09$\\
+			71	& 0.97	& 2.89	& $\pm0.02$\\
+			
+			\hline
+		\end{tabular}
+		\caption{MAE Result table for KNN}
+		\label{MaetableReskn}
+	\end{center}
+	
+\end{table}
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular}{ |c|c|c|c|c| } 
+			\hline 
+			Category No. & Average RMSE DT & Max RMSE DT & Standard Deviation DT \\
+			\hline
+			13  & 0.90	& 3.61	& $\pm0.12$\\
+			19	& 0.73	& 3.08	& $\pm0.076$\\
+			23	& 1.10	& 3.22	& $\pm0.036$\\
+			71	& 0.99	& 3.21	& $\pm0.17$\\
+			
+			\hline
+		\end{tabular}
+		\caption{RMSE Result table for DT}
+		\label{tableResdt}
+	\end{center}
+	
+\end{table}
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular}{ |c|c|c|c|c| } 
+			\hline 
+			Category No. & Average RMSE KNN & Max RMSE KNN & Standard Deviation KNN \\
+			\hline
+			13	& 0.96	& 3.61	& $\pm0.24$\\
+			19	& 0.75	& 3.10	& $\pm0.08$\\
+			23	& 1.28	& 3.20	& $\pm0.07$\\
+			71	& 1.08	& 3.16	& $\pm0.174$\\
+			
+			\hline
+		\end{tabular}
+		\caption{RMSE Result table for KNN}
+		\label{tableReskn}
+	\end{center}
+	
+\end{table}
+
+	%********************************
+	% Conclusion
+	%*******************
+	\section{Conclusion}
+	\noindent This chapter consists of all about result analysis of our work. Here we summarize the result as, for 19 cluster system gives us comparable better performance than 13, 23, 71 cluster. Using 19 cluster we got the MAE result 0.58 from DT approach and 0.64 from K-NN approach, RMSE 0.73 from DT approach and 0.75 from K-NN approach.
+	
+\end{document}
+

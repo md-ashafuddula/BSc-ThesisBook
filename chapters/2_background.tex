@@ -1,0 +1,81 @@
+\documentclass[document.tex]{subfiles}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\begin{document}
+
+\chapter{Background}
+\hrule
+\newpage
+
+\section{Introduction}
+\noindent This chapter consists of basic knowledge about recommendation system, types of recommendation system, main problem of recommendation system. This knowledge will help us to understand clearly about our proposed method.
+\section{Recommendation System}
+Recommendation system is a information filtering system which can recommend based on different attributes. Example: youtube recommends us various items, Facebook recommends us new people, group etc.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=5in]{imgs/rsex.jpg}
+	\caption[Recommendation process]
+	{Recommendation process}
+\end{figure}
+Two different approaches are widely adopted to design recommendation system: 
+\begin{enumerate}
+	\item Content-based filtering and 
+	\item Collaborative filtering
+\end{enumerate}
+
+\subsection{Content-based filtering}
+Content-based filtering generates a profile for user based on the content description on the items previously rated by the user. In this approach it is possible to recommend new items to the user which have not been rated by any users. But however, content-based filtering cannot provide recommendation to new users who does not have any historical ratings. Content-based filtering often ask users to answer a questionnaire that explicitly states their preferences to generates initial profile of new user to provide new users recommendation. As a user consumes more items, her profile is updated and content features of items that she consumed will receive more weights. Content-based filtering one drawback is the recommended items are similar to the items previously consumed by the user. As example, if a user has seen only romance movies, then content-based filtering would recommend only romance movies. It often causes low satisfaction of recommendations due to lack of diversity for new or casual users who may reveal only small fraction of their interests. Another important limitation of content-based filtering is that its performance highly depends on the quality of feature generation and selection.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=5in]{imgs/contentBased.jpg}
+	\caption[Content-based filtering process]
+	{Content-based filtering process}
+\end{figure}
+\subsection{Collaborative filtering}
+Collaborative filtering associates a user with a group of like-minded users, and then recommend items enjoyed by others user in the same group. This approach has few merits over content-based filtering approach. First, collaborative filtering does not require any feature generation and selection method and it can be applied to any domains if users rating (either explicit or implicit) are available. In other words collaborative filtering approach is content dependent. Second, collaborative filtering can provide “serendipitous finding”, whereas content-based filtering cannot. As example, if most other romance movie fans love a comedy movie, even though a user has watched only romance movies, a comedy movie would be recommended to the user. Collaborative filtering captures this kind of relationship between items by analyzing user consumption history over the population. Content-based filtering uses a profile of individual but does not exploit profiles of other users. Even though collaborative filtering performs better than content-based filtering when lots of user ratings are available, it suffers from cold-start problems where historical ratings on items or users are not available.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=5in]{imgs/collaborative.jpg}
+	\caption[Collaborative filtering process]
+	{Collaborative filtering process}
+\end{figure}
+\section{Cold-Start problem}
+The key challenge in any recommender systems including content-based and collaborative filtering is to provide recommendations at early stage when available data is extremely sparse. Since the col start problem is related to the sparsity of information (i.e., for users and items) available in the recommendation algorithm.\\
+The problem is more severe at when the system newly launches and most of users and items are new. However, the problem never goes away completely, since new users and items are constantly coming in any healthy recommender system.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=5in]{imgs/coldstart.jpg}
+	\caption[Cold-start problem]
+	{Cold-start problem}
+\end{figure}
+There are three types of cold start problems which can be occurred in a recommender system: 
+\begin{enumerate}[a)]
+	\item Recommendation for new users
+	\item Recommendation for new items
+	\item Recommendation for new items on new users
+\end{enumerate}
+In this paper we focuses only on user side cold start problem.\\
+We considers this situation where new user asks for recommendations and no data are available for her preferences. Such data are related to ratings for items. Ratings are very important here as they show the preferences of a specific user. Additionally, no historical data are present. We propose an algorithm which results the final outcome through three phases. The first phase is responsible to provide means for the classification of the new user in a specific group. For the classification, we adopt efficient techniques like the K-Nearest neighbor and the Decision Tree Algorithm. In the second phase, the algorithm utilizes an intelligent technique for finding the ‘neighbors’ of the new user. We examine important characteristics of the user and try to find other users inside the group that best match to her. In the third phase, the final outcome is calculated. This is done adopting prediction techniques for estimating the ratings of the new user. 
+\section{Singular Value Decomposition}
+The singular-value decomposition (SVD) is a factorization of a real or complex matrix. It is the generalization of the eigen decomposition of a positive semi definite normal matrix (for example, a symmetric matrix with positive eigenvalues) to any matrix via an extension of the polar decomposition.\\
+In this work I used SVD to reduce users feature.
+\begin{equation}
+A_{[m\times n]} = U_{[m \times r]} \Sigma_{[r \times r]} V_{[n \times r]}^T 
+\label{svd}
+\end{equation}
+\section{Elbow Method}
+Using the elbow method to determine the optimal number of clusters for k-means clustering. K-means is a simple unsupervised machine learning algorithm that groups a dataset into a user-specified number (k) of clusters.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=3in]{imgs/elbow.jpg}
+	\caption[Elbow curve]
+	{Elbow curve}
+\end{figure}
+
+\section{Related Work}
+To build recommender systems two different approaches have been widely used: content-based filtering and collaborative filtering. Content-based  filtering uses behavioral data about a user to recommend items similar to those consumed by the user in the past while collaborative filtering compares one user's behavior against a database of other users' behaviors in order to identify items that like-minded users are interested in. \\
+The major difference between two approaches is that content-based filtering uses a single user information while collaborative filtering uses community information. Even though content-based filtering is efficient in filtering out unwanted information and generating recommendations for a user from massive information, it often suffers from lack of diversity on the recommendation. Content-based filtering requires a good feature generation and selection method while collaborative filtering only requires user ratings. Content-based filtering finds few if any coincidental discoveries while collaborative filtering systems enables serendipitous discoveries by using historical user data. Hundreds of collaborative filtering algorithms have been proposed and studied, including K nearest neighbors \cite{a3,a4,a5}, Bayesian network methods \cite{a6}, classifier methods \cite{a7}, clustering methods \cite{a8}, probabilistic methods \cite{a9,a10}, ensemble methods \cite{a11}, and combination of KNN and SVD \cite{a12}, Although collaborative filtering provides recommendations effectively where massive user ratings are available such as in the Netflix data set, it does not perform well where user rating data is extremely sparse. Several linear factor models have been proposed to attack the data sparsity. Singular Value Decomposition (SVD), Principal Component Analysis (PCA), or Maximum Margin Matrix Factorization (MMMF) has been used to reduce the dimensions of the user-item matrix and smoothing out noise \cite{a7,a13,a14}. However, those linear factor models do not solve the cold-start problems for new users or new items. Several hybrid methods, which often combine information filtering and collaborative filtering techniques, have been proposed. Fab \cite{a15} is the first hybrid recommender system, which builds user profiles based on content analysis and calculates user similarities based on user profiles. Basu et al. \cite{a16} generated three different features: collaborative features (i.e. users who like the movie X), con-tent features, and hybrid features (i.e. users who like comedy movies). Then, an inductive learning system, Ripper, is used to learn rules and rule-based prediction was generated for the recommendation. Claypool et al. \cite{a17} built an online news-paper recommender system, called Tango, that scored items based on collaborative filtering and content-based filtering separately. Then two scores are linearly combined: As users provide ratings, absolute errors of two scores are measured and weights of two algorithms are adjusted to minimize error. Good et al.\cite{a18} experimented with a number of types of filterbots, including Ripper-Bots, DGBots, Genre-Bots and MegaGenreBot. A filterbot is an automated agent that rates all or most items algorithmically. The filterbots are then treated as additional users in a collaborative filtering system. Park et al.\cite{a19} improved the scalability and performance of filterbots in cold-start situations by adding a few global bots instead of numerous personal bots and applying item-based instead of user-user collaborative filtering. Melville et al.\cite{a20} used content-based filtering to generate default ratings for unrated items to make a user-item matrix denser. Then traditional user-user collaborative filtering is performed using this denser matrix. Schein et al.\cite{a21} extended Hofmann's aspect model to combine item contents and user ratings under a single probabilistic frame work. Even though hybrid approaches potentially improve the quality of the cold-start recommendation, the main focus of many hybrid methods is improving prediction accuracy over all users by using multiple data rather than directly attacking the cold-start problem for new users and items. Note that all above approaches only lessen the cold-start problem where a target user has rated at least few ratings but do not work for new user or new item recommendation. There are a few existing hybrid approaches which are able to make new user and new item recommendation. \cite{a22} proposed an online perceptron algorithm coupled with combinations of multiple kernel functions that unify collaborative and content-based filtering. The resulting algorithm is capable of providing recommendations for new users and new items, but the performance has not been studied yet. The computational complexity in the proposed kernel machine scales as a quadratic function of the number of observations, which limits its applications to large-scale data sets. Agarwal and Merugu \cite{a23} proposed a statistical method to model dyadic response as a function of available predictor information and unmeasured latent factors through a predictive discrete latent factor model. Even though the proposed approach can potentially solve the cold-start problems, its main focus is improving quality of recommendation in general cases and its performance in cold-start settings is not fully studied yet. Chu and Park \cite{a24} proposed a predictive bilinear regression model in “dynamic content environment” where the popularity of items changes temporally, lifetime of items is very short (i.e. few hours), and recommender systems are forced to recommend only new items. In the paper “Accuracy and Diversity in Cross-domain Recommendations for Cold-start Users with Positive-only Feedback” \cite{a25} they evaluates recommendation methods on a dataset with positive-only feedback in the movie and music domains, both in single and cross-domain scenario. They used two datasets ( positive only Feedback ) consisting of (a)Facebook likes on movies and (b)music artists. Problems in the paper was the results depends on the target domain and they did not analysis for more domains. In paper “Attack Resistant Collaborative Filtering” \cite{a26} they discuss about (a)Robust CF algorithm which is stable against moderate shilling attacks on large datasets (b) Leverages the accuracy of PCA-based attack detection. They used MovieLens dataset. The problem was (a)Shillings attacks are concentrated in a short period of time as opposed to real users (b) Need to devise more accurate ways of detecting the cutoff parameter to save flagged users from any potential impact. In paper “Learning Bidirectional Similarity for Collaborative Filtering” \cite{a27} the proposed a novel model learning user and item similarities simultaneously for collaborative filtering. They used Movielens, Eachmovie and Netflix dataset. Their problem was to learn model in larger scale datasets. In paper “Social Collaborative Filtering for Cold-start Recommendations” they discuss about Cold-start recommendation task in an online retail setting for users who have not yet purchased any available items but who have granted access to limited side information, such as basic demographic data (gender, age, location) or social network information (Facebook friends or page likes). The dataset they used in this study comes from Kobo Inc. a major online ebook retailer with more than 20 million readers. It contains an anonymized dataset of ebook purchases and Facebook friends and page likes for a random subset of 30,000 Kobo users. Problem was they did not examine, if it can be extended with learning-based techniques such as collective matrix factorization.
+
+\section{Conclusion}
+Before starting discuss about our proposed model in this chapter, we discussed basic knowledge such with singular valued decomposition (SVD), Elbow Method and related work of recommendation system \& cold-start recommendation system.
+\end{document}

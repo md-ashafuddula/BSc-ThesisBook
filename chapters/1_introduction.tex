@@ -1,0 +1,83 @@
+\documentclass[document.tex]{subfiles}
+
+
+
+
+\begin{document}
+\chapter{Introduction}
+\hrule
+%\localtableofcontents % local toc
+\newpage
+
+
+\section{Introduction}
+\noindent Recommendation systems (RSs) technology currently used in many application domains.  RSs can suggest items of interest to users based on their preferences. Such preferences could be retrieved either explicitly or implicitly. Generally recommendations are based on models built from item characteristics or users social environment. As an example, recommendations could be based on other users having similar characteristics (e.g., age, gender, occupation, country). The recommendation process is a complex process that combines information about users and the attributes of items.\\ 
+This paper deals with solving cold-start problem by using K-Nearest Neighbor (KNN) and Decision Tree classification algorithm and comparison between these two methodologies.
+
+
+
+\section{Machine Learning}
+Machine learning is an essential part of artificial intelligence that is concerned with the design, analysis, implementation, and applications of programs that learn from experience \cite{a1}. In other words, Machine learning is the science of getting computers to act without being explicitly programmed. In the past decade, machine learning has given us self-driving cars, practical speech recognition, effective web search and vastly improved understanding of human genome. Machine learning is so pervasive today that we probably use it dozens of times a day without knowing it. Many researchers also think it is the best way to make progress towards human level AI. In this paper we will learn about the most effective machine learning techniques, and gain practice implementing them and getting them to work. Mainly there are three classes of learning:
+\begin{enumerate}[i]
+	\item Supervised Learning
+	\item Unsupervised Learning
+	\item Reinforcement Learning
+\end{enumerate}
+
+\subsection{Supervised Learning}
+The learning where the algorithm generates a function that maps inputs to desire outputs. Supervised learning is the machine learning task of inferring a function from labeled training data. The training data consist of a set of training examples.\\
+A supervised learning algorithm analyzes the training data and produces an inferred function, which can be used for mapping new examples. An optional scenario will allow for the algorithm to correctly determine the class labels for unseen instances. This requires the learning algorithm to generalize from the training data to unseen situations in a “reasonable” way. Here K-Nearest Neighbor (KNN) and Decision Tree (DT) classification algorithms are supervised learning.
+\subsection{Unsupervised Learning}
+Unsupervised learning is a type of machine learning algorithm used to draw inferences from datasets consisting of input data without labeled responses. The most common unsupervised learning method is cluster analysis, which is used for exploratory data analysis to find hidden patterns or grouping in data.\\
+K-means clustering is an unsupervised method aims to create group of objects, or clusters, in such a way that objects in the same cluster are very similar and objects in different clusters are quite distinct.
+
+\subsection{Reinforcement Learning}
+Reinforcement Learning is a type of Machine Learning, and thereby also a branch of Artificial Intelligence. It allows machines and software agents to automatically determine the ideal behaviour within a specific context, in order to maximize its performance. Simple reward feedback is required for the agent to learn its behavior, this is known as the reinforcement signal. There are many different algorithms that tackle this issue. As a matter of fact, Reinforcement Learning is defined by a specific type of problem, and all its solutions are classed as Reinforcement Learning algorithms. 
+
+
+\section{Data Mining}
+Data Mining is defined as extracting the information from the huge set of data. It discovers information within the data that queries and reports cannot effectively reveal. It allows user to analyze data from many different dimensions or angles, categorize it, and summarize the relationships identified.\\
+Technically, data mining is the process of finding correlations or patterns among dozens of fields in large relational databases.\\
+Data mining process consists of three stages:\\
+\begin{enumerate}
+	\item Initial exploration
+	\item Model building or pattern identification
+	\item Deployment (i.e., the application of the model to new data in order to generate predictions)
+\end{enumerate}
+
+\section{Motivation}
+Machine learning is a subfield of artificial intelligence that is concerned with the design analysis, implementation and applications of programs that learn from experience. Machine learning is classified as supervised learning and unsupervised learning.\\ 
+Today, recommendation system is most popular to recommend items to the systems users, like youtube, facebook, amazon system. Now the main problem is cold-start problem when users or items are new in any system they don’t have primary historical data to recommend users. This challenge motivated me to efficiently recommend items to new users.
+\section{Objectives of the thesis}
+\begin{itemize}
+	\item Reduce users features
+	\item Finding number of possible cluster for users
+	\item Cluster users based on their reduced features
+	\item Classify new users based on their attributes
+	\item Predict rating for users
+	\item Efficient recommendation of the items with good rating 
+\end{itemize}
+%\tikzstyle{format} = [draw, thick, fill=blue!20,minimum height=1.5cm]
+%\tikzstyle{medium} = [ellipse, draw, thick, fill=green!20, minimum height=2cm]
+
+%\caption{Block Diagram of Overall System}
+
+\section{Organization of the thesis}
+Rest of the Thesis is organized as follows
+\begin{description}
+        \item[Chapter 1: Introduction] \hfill \\
+        This chapter introduces the basic concepts Machine Learning and it's types. It also discusses the objectives of this thesis work.
+        \item[Chapter 2: Background] \hfill \\
+        This chapter discusses the background of Machine learning, Recommendation Systems and some basic knowledge of our work.
+        \item[Chapter 3: Literature Study] \hfill \\
+        This chapter contains the literature study based on Clustering, Classification, KNN \& DT Classification.
+        \item[Chapter 4: Proposed Methodology] \hfill \\
+        This chapter contains our proposed methodology to solve cold-start recommendation on movie rating prediction
+        \item[Chapter 5: Result Analysis] \hfill \\
+        This chapter deals result analysis.
+        \item[Chapter 6: Conclusion] \hfill \\
+        This chapter contains conclusion, limitation of K-NN, limitation of DT and future works.
+\end{description}
+\section{Conclusion}
+In this chapter, the motivation, objectives and organization of the thesis are described. This chapter also contains some basic description about Machine Learning, Data Mining, Recommendation Systems (RSs), different type of RSs, Cold-start problem, Singular Value Decomposition (SVD), Elbow method and Motivation of this work.
+\end{document}
