@@ -1,2 +1,0 @@
-# LateX-myThesisBook
-My book
