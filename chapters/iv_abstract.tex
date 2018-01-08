@@ -7,7 +7,15 @@
         \vspace{1cm}
 \end{center}
 
-\noindent Recommendation system is an information filtering system based on users different attributes and used in online e-commerce applications to improve user engagement and then to increase revenue. The main challenge for a recommender systems is providing quality recommendation to the users in cold-start situation. Collaborative filtering and Content-based filtering are two approaches. We consider one “cold-start” problem from three types Recommendation on existing items for new users, Recommendation on new items for existing users \& Recommendation on new items for new users, which is "Recommendation on existing items for new users". In this paper, we build a movie rating prediction based on K-Nearest Neighbor (K-NN) and Decision Tree (DT) approach with using K-means clustering algorithm for “cold-start” situation in a system. Then compare these two method based on the MAE \& RMSE value in different number of cluster to evaluate better method in “cold-start” situation.
+\noindent Recommendation system (RS) is an information filtering system based on users different attributes and it’s aim is to provide personalized recommendations to the users (e.g.movie, music, drama, song, books). To develop a recommender system Collaborative filtering (CF) and Content-based filtering (CB) are two most popular approaches.\\
+The main challenge for a recommender systems is to provide the quality recommendation to the users in a cold-start situation. In this thesis, We consider one “cold-start” problem which is ”Recommendation on existing items for new users” from Recommendation on existing items for new users, Recommendation on new items for existing users and Recommendation on new items for new users. Initially, the recommendation system, problems in a recommendation system, various algorithm to solve recommendation system in a cold-start situation are studied. Secondly, the problems in solving cold start problem with their proposed methodology are identified.
+The objectives of this thesis are as follows:
+\begin{enumerate}
+	\item Classify new users based on their attributes
+	\item Recommend top rated item to the new users
+\end{enumerate}	
+To accomplish these objectives we have proposed a model where classification algorithms K Nearest Neighbor (K-NN) or Decision Tree (DT) combined with prediction mechanisms to provide the necessary means for retrieving recommendations. The proposed approach incorporates classifications methods in a CF systems while the use of demographic data helps to identify other users with similar behavior.\\
+In this thesis, we build a movie rating prediction system based on K-NN and DT algorithm using K-means clustering algorithm for “cold-start” situation in a system. Then compare these two methods based on the MAE and RMSE value in a different number of cluster to evaluate better method in “cold-start” situation. Our experiment shows the performance of the proposed methodology through a large number of experiments. We have taken widely known movielens dataset provided by the grouplens organization. We reveal the advantages of the proposed solution by providing satisfactory numerical results in different experimental scenarios.
 
 \clearpage
 
