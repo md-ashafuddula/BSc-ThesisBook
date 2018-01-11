@@ -1,4 +1,4 @@
-This is my whole thesis book written in latex. All credit goes to @Minhujul Haque vai 10 series.
+This is my whole thesis book written in latex. All credit goes to @Minhazul Haque vai 10 series.
 I could not do this without his templet.
 We had an updated from previous template thats why I have included some new packages and modify some
 required portion.
