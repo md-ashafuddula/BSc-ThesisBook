@@ -1,8 +1,8 @@
 This is my whole thesis book written in latex. All credit goes to **Minhazul Haque vai 10 series**.
 I could not complete this without his templet.
 
-I have included some new packages and modify some required portion as per my work.
-If anyone wants to use this as a template clone this into your desktop then at first run this in your machine with textmaker/textstudio or any latex editor.
-I used textstudio.
+I have included some new packages and modified some required portions as per my work.
+If anyone wants to use this as a template I would request you to clone this on your desktop and then at first run this on your machine with text-maker/text-studio or any latex editor.
+I used text-studio.
 
-Remember, when you try to run this code for the first time in your machine try to put Internet connection in on-state so that the required packages can get installed autometically. 
+Remember, when you try to run this code for the first time on your machine try to put an Internet connection in on-state so that the required packages can get installed automatically. 
